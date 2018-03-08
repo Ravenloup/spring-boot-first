@@ -18,5 +18,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class BootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BootApplication.class, args);
+		LambdaTest.lambda();// lambda java 8 example here.
 	}
 }
