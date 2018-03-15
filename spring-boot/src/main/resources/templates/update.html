@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:object="${user}" th:action="@{/update}" method="POST">
+<input type="text" th:field="*{id}" hidden="hidden"/>
+name <input type="text" th:field="*{name}"/>
+age <input type="number" th:field="*{age}"/>
+<input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

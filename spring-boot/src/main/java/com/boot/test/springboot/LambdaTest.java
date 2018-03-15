@@ -10,6 +10,7 @@ package com.boot.test.springboot;
 public class LambdaTest {
 
 	public static void lambda() {
+		//example one : pass away methods
 		Thread thread = new Thread(new Runnable() {
 			public void run() {
 				System.out.println("Old way!");

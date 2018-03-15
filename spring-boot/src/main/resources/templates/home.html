@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="UTF-8"/>
 <title>Insert title here</title>
@@ -7,5 +7,27 @@
 <body>
 
 <h1>Hey There!</h1>
+<p th:text="#{message.msg}">mmmmmmmmmmmmmmmmmm</p>
+<p th:text="#{home.meaasge(${name},${name2})}">hhhhhhhhhhhhhhh</p>
+<p th:text="${name}">hhhhhhhhhhhhhhh</p>
+
+<form action="#" th:action="@{/action}" th:object="${user}" method="POST">
+name <input type="text" th:field="*{name}"/>
+age <input type="number" th:field="*{age}"/>
+<input type="submit" value="Submit"/>
+</form>
+<div>
+<table>
+   <tbody th:each="user1 : ${users}">
+      <tr>
+         <td th:text="${user1.name}">...</td>
+         <td th:text="${user1.age}">...</td>
+         <td ><a th:href="@{'update-user/'+${user1.id}}"> Edit </a></td>
+         <td ><a th:href="@{'delete-user/'+${user1.id}}"> Delete </a></td>
+      </tr>
+   </tbody>
+</table>
+</div>
+
 </body>
 </html>
