@@ -66,14 +66,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value= {"/delete-user/{id}"}, method=RequestMethod.GET)
-	public ModelAndView deleteUser(@PathVariable(value="id") String id) {
+	public String deleteUser(@PathVariable(value="id") String id) {
 		System.out.println("USER :: " + id);
-		userDao.deleteUser(id);;
-		ModelAndView modelAndView = new ModelAndView("home");
-		User user = new User();
-		modelAndView .addObject("user", user );
-		List<User> users = userDao.getusers();
-		modelAndView.addObject("users", users);
-		return modelAndView;
+		userDao.deleteUser(id);
+		return "redirect:/home";
 	}
 }

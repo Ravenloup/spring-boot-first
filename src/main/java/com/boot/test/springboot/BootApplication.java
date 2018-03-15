@@ -3,6 +3,7 @@
  */
 package com.boot.test.springboot;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +20,10 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 @ComponentScan(basePackages="com.boot.test.*")
 @EnableAutoConfiguration
 public class BootApplication {
+	
+	@Value("${property}")
+	private String message;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BootApplication.class, args);
 		LambdaTest.lambda();// lambda java 8 example here.
@@ -33,8 +38,9 @@ public class BootApplication {
 	
 	@Bean
 	public MessageSource messageSource() {
+		System.out.println("message :: " + message);
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasenames("classpath:/message");
+		messageSource.setBasenames("classpath:/"+message);
 		messageSource.setUseCodeAsDefaultMessage(true);
 		messageSource.setDefaultEncoding("UTF-8");
 		messageSource.setCacheSeconds(5);
