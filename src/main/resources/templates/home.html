@@ -18,7 +18,7 @@
 
 <form action="#" th:action="@{/action}" th:object="${user}" method="POST" class="form-control">
 name <input required="required" type="text" th:field="*{name}"/>
-age <input required="required" type="number" th:field="*{age}"/>
+age <input required="required" type="text" pattern="[0-9]" th:field="*{age}"/>
 <input type="submit" value="Submit" class="btn btn-outline-primary"/>
 </form>
 <!-- <div class="progress">
