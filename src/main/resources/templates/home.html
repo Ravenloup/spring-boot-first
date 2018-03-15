@@ -2,25 +2,34 @@
 <html >
 <head>
 <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<body th:inline="text">
 
-<h1>Hey There!</h1>
-<p th:text="#{message.msg}">mmmmmmmmmmmmmmmmmm</p>
+<h1 class="text-success">Hey There!<span class="badge badge-pill badge-secondary">New</span></h1>
+<p th:text="#{message.msg}" class="text-muted">mmmmmmmmmmmmmmmmmm</p>
 <p th:text="#{home.meaasge(${name},${name2})}">hhhhhhhhhhhhhhh</p>
 <p th:text="${name}">hhhhhhhhhhhhhhh</p>
 
-<form action="#" th:action="@{/action}" th:object="${user}" method="POST">
+<form action="#" th:action="@{/action}" th:object="${user}" method="POST" class="form-control">
 name <input type="text" th:field="*{name}"/>
 age <input type="number" th:field="*{age}"/>
-<input type="submit" value="Submit"/>
+<input type="submit" value="Submit" class="btn btn-outline-primary"/>
 </form>
-<div>
-<table>
+<!-- <div class="progress">
+  <div class="progress-bar progress-bar-striped" style="width:70%"></div>
+</div> -->
+<br/>
+<div class="container-fluid table-responsive">
+<table class="table table-hover table-light table-bordered ">
    <tbody th:each="user1 : ${users}">
       <tr>
-         <td th:text="${user1.name}">...</td>
+         <td>[[${user1.name}]]</td>
          <td th:text="${user1.age}">...</td>
          <td ><a th:href="@{'update-user/'+${user1.id}}"> Edit </a></td>
          <td ><a th:href="@{'delete-user/'+${user1.id}}"> Delete </a></td>
@@ -28,6 +37,17 @@ age <input type="number" th:field="*{age}"/>
    </tbody>
 </table>
 </div>
-
+<!-- <div class="container">
+<ul class="list-group" th:each="user1 : ${users}">
+  <li class="list-group-item">[[${user1.name}]]</li>
+</ul>
+</div>
+<ul class="pagination">
+  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul> -->
 </body>
 </html>
