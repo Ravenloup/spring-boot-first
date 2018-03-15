@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,7 +21,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 @SpringBootApplication
 @ComponentScan(basePackages="com.boot.test.*")
 @EnableAutoConfiguration
-public class BootApplication {
+public class BootApplication extends SpringBootServletInitializer{
 	
 	@Value("${property}")
 	private String message;
@@ -46,4 +48,9 @@ public class BootApplication {
 		messageSource.setCacheSeconds(5);
 		return messageSource;
 	}
+	
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(BootApplication.class);
+    }
 }
