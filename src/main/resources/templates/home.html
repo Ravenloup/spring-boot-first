@@ -30,6 +30,14 @@
 <br/>
 <div class="container-fluid table-responsive">
 <table class="table table-hover table-light table-bordered ">
+	<thead class="thead-dark">
+	<tr>
+		<td>NAME</td>
+         <td>AGE</td>
+         <td>Edit</td>
+         <td>Delete</td>
+     </tr>
+	</thead>
    <tbody th:each="user1 : ${users}">
       <tr>
          <td>[[${user1.name}]]</td>
